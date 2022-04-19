@@ -49,7 +49,6 @@ function BarChart({ chartData }) {
     const myData = [];
     const colors = [];
     for (let term in data) {
-      console.log("data", data[term]);
       labels.push(term);
       const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
       myData.push(data[term]);
@@ -66,7 +65,6 @@ function BarChart({ chartData }) {
       ],
     };
 
-    console.log("chartData", myChardData);
     setDataState(myChardData);
   };
 

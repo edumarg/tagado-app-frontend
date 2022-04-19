@@ -22,7 +22,7 @@ function Types({ data, setData }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("type to save", typeToSave);
+
     const myData = data;
     myData.push(typeToSave);
     setData(myData);

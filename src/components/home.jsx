@@ -12,10 +12,11 @@ function Home({ data }) {
     const myData = [...data];
     const myTypes = [];
     for (let type of myData) {
-      if (!myTypes.includes(type.type)) {
-        myTypes.push(type.type);
+      if (!myTypes.includes(String(type.type))) {
+        myTypes.push(String(type.type));
       }
     }
+    myTypes.sort((a, b) => a - b);
     setTypes(myTypes);
   };
 
