@@ -9,5 +9,6 @@
 {"_id": "6240f96ea08f767f629940d6", "type":3, "terms": ["7", "8", "9"], "__v": 0}, 
 {"_id": "624100c31e79e3469c053f18", "type": 4, "terms": ["london", "washington", "berlin"], "__v": 0}, 
 {"_id": "624106f71e79e3469c053f27", "type": 5, "terms": ["tlv", "tlv", "eilat", " ramat gan", " dimona", " tlv", " eilat", " tlv "], "__v": 0}, 
-{"_id": "6241806128517a6f3cd87742", "type": 6, "terms": ["ship", "build", "house"], "__v": 0}
+{"_id": "6241806128517a6f3cd87742", "type": 6, "terms": ["ship", "build", "house"], "__v": 0},
+{"_id": "6241806128517a6f3cd87742", "type": 9, "terms": ["ship", "build", "house"], "__v": 0}
 ]

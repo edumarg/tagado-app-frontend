@@ -349,3 +349,14 @@ template {
 [hidden] {
   display: none;
 }
+
+/** My styles **/
+
+.my-title {
+  text-align: center;
+}
+
+.my-form {
+  width: 50%;
+  margin: 3rem auto;
+}

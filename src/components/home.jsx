@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 function Home({ data }) {
   const [types, setTypes] = useState([]);
+  const [typeToGet, setTypeToGet] = useState(undefined);
 
   const getTypes = () => {
     const myData = [...data];
@@ -20,16 +21,41 @@ function Home({ data }) {
     getTypes();
   }, [data]);
 
-  console.log("myTypes", types);
+  const handleChange = (event) => {
+    const valueToSend = event.target.value;
+    setTypeToGet(valueToSend);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("submited", typeToGet);
+  };
+
   return (
-    <div>
-      <h1>Types</h1>
-      <DropdownButton id="dropdown-basic-button" title="Select a type">
-        {types.map((type) => (
-          <Dropdown.Item key="type">{type}</Dropdown.Item>
-        ))}
-      </DropdownButton>
-    </div>
+    <React.Fragment>
+      <Form className="my-form" onSubmit={(event) => handleSubmit(event)}>
+        <Form.Group className="mb-3" controlId="type">
+          <Form.Label>Type</Form.Label>
+          <Form.Select
+            aria-label="Select type"
+            defaultValue={0}
+            onChange={(event) => handleChange(event)}
+          >
+            <option disabled value={0}>
+              Select a type
+            </option>
+            {types.map((type) => (
+              <option value={type} key={type}>
+                {type}
+              </option>
+            ))}
+          </Form.Select>
+        </Form.Group>
+        <Button variant="primary" type="submit" disabled={!typeToGet}>
+          Get terms
+        </Button>
+      </Form>
+    </React.Fragment>
   );
 }
 
