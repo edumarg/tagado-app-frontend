@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
 
-function MyNavBar(props) {
+function MyNavBar() {
   return (
     <React.Fragment>
       <Navbar bg="light" expand="lg">

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Types(props) {
+function Types() {
   return (
     <div>
       <h1>Add new Type</h1>

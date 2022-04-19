@@ -1,0 +1,13 @@
+[
+{"_id": "61ee8b95f8bc82f88b1851a9", "type": 1, "terms": ["bug", "advice", "suggestion"]}, 
+{"_id": "61ee8c0bf8bc82f88b1851aa", "type":1, "terms": ["bug", "suggestion"]}, 
+{"_id": "61ee8c1df8bc82f88b1851ab", "type": 1, "terms": ["suggestion"]}, 
+{"_id": "61ee8c55f8bc82f88b1851ad", "type": 2, "terms": ["shipping", "damage", "broken"]},
+{"_id": "61ee8cb2f8bc82f88b1851af", "type": 2, "terms": ["damage", "broken"]}, 
+{"_id": "61ee8cc3f8bc82f88b1851b0", "type": 2, "terms":
+["broken"]}, {"_id": "61ee8cccf8bc82f88b1851b1", "type": 2, "terms": ["damage", "broken"]}, 
+{"_id": "6240f96ea08f767f629940d6", "type":3, "terms": ["7", "8", "9"], "__v": 0}, 
+{"_id": "624100c31e79e3469c053f18", "type": 4, "terms": ["london", "washington", "berlin"], "__v": 0}, 
+{"_id": "624106f71e79e3469c053f27", "type": 5, "terms": ["tlv", "tlv", "eilat", " ramat gan", " dimona", " tlv", " eilat", " tlv "], "__v": 0}, 
+{"_id": "6241806128517a6f3cd87742", "type": 6, "terms": ["ship", "build", "house"], "__v": 0}
+]
