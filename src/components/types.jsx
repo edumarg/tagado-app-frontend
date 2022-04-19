@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-function Types() {
+function Types({ data, setData }) {
   const [typeToSave, setTypeToSave] = useState({ type: "", terms: [] });
 
   const handleChange = (event) => {
@@ -23,6 +23,9 @@ function Types() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("type to save", typeToSave);
+    const myData = data;
+    myData.push(typeToSave);
+    setData(myData);
   };
 
   return (

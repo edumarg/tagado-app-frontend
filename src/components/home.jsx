@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import BarChart from "./barChart";
 
 function Home({ data }) {
   const [types, setTypes] = useState([]);
   const [typeToGet, setTypeToGet] = useState(undefined);
+  const [chartData, setChartData] = useState({});
 
   const getTypes = () => {
     const myData = [...data];
@@ -26,9 +28,22 @@ function Home({ data }) {
     setTypeToGet(valueToSend);
   };
 
+  const getTermsForType = (typeId) => {
+    const myTerms = {};
+    const myData = [...data];
+    for (let type of myData)
+      if (type.type == typeId) {
+        for (let term of type.terms) {
+          if (!(term in myTerms)) myTerms[term] = 1;
+          else myTerms[term] += 1;
+        }
+      }
+    setChartData(myTerms);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("submited", typeToGet);
+    getTermsForType(typeToGet);
   };
 
   return (
@@ -55,6 +70,7 @@ function Home({ data }) {
           Get terms
         </Button>
       </Form>
+      <BarChart chartData={chartData} />
     </React.Fragment>
   );
 }

@@ -37,7 +37,10 @@ function App() {
       <MyNavBar data={data} />
       <Routes>
         <Route path="/home" element={<Home data={data} />} />
-        <Route path="/types" element={<Types />} />
+        <Route
+          path="/types"
+          element={<Types data={data} setData={setData} />}
+        />
         <Route path="/not-found" element={<NotFound />} />
         <Route exact path="/" element={<Navigate replace to="/home" />} />
         <Route path="*" element={<Navigate replace to="/not-found" />} />
