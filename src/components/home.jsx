@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 import BarChart from "./barChart";
 import http from "../services/httpServices";
 
@@ -9,6 +10,7 @@ function Home({ data }) {
   const [types, setTypes] = useState([]);
   const [typeToGet, setTypeToGet] = useState(undefined);
   const [chartData, setChartData] = useState({});
+  const [loadingChart, setLoadingChart] = useState(false);
 
   const getTypes = () => {
     const myData = [...data];
@@ -32,6 +34,7 @@ function Home({ data }) {
   };
 
   const getTermsForType = async (typeId) => {
+    setLoadingChart(true);
     try {
       const response = await http.get(`/type/${Number(typeId)}`);
       const data = await response.data;
@@ -41,6 +44,7 @@ function Home({ data }) {
       if (exception.response)
         toast.error("There was an issue getting the information");
     }
+    setLoadingChart(false);
   };
 
   const handleSubmit = (event) => {
@@ -68,11 +72,19 @@ function Home({ data }) {
             ))}
           </Form.Select>
         </Form.Group>
-        <Button variant="primary" type="submit" disabled={!typeToGet}>
+        <Button variant="primary" type="submit" disabled={!data || !typeToGet}>
           Get terms
         </Button>
       </Form>
-      <BarChart chartData={chartData} />
+      {loadingChart ? (
+        <div className="my-spinner-div">
+          <Spinner animation="border" variant="warning">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
+      ) : (
+        <BarChart chartData={chartData} />
+      )}
     </React.Fragment>
   );
 }

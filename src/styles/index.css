@@ -360,3 +360,16 @@ template {
   width: 50%;
   margin: 3rem auto;
 }
+
+/* .my-spinner {
+  width: "5rem";
+  height: "5rem";
+  margin: "100px auto";
+} */
+
+.my-spinner-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
