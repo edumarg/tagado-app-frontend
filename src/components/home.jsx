@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import BarChart from "./barChart";
+import http from "../services/httpServices";
 
 function Home({ data }) {
   const [types, setTypes] = useState([]);
@@ -29,17 +31,16 @@ function Home({ data }) {
     setTypeToGet(valueToSend);
   };
 
-  const getTermsForType = (typeId) => {
-    const myTerms = {};
-    const myData = [...data];
-    for (let type of myData)
-      if (type.type == typeId) {
-        for (let term of type.terms) {
-          if (!(term in myTerms)) myTerms[term] = 1;
-          else myTerms[term] += 1;
-        }
-      }
-    setChartData(myTerms);
+  const getTermsForType = async (typeId) => {
+    try {
+      const response = await http.get(`/type/${Number(typeId)}`);
+      const data = await response.data;
+      console.log("Data", data);
+      setChartData(data);
+    } catch (exception) {
+      if (exception.response)
+        toast.error("There was an issue getting the information");
+    }
   };
 
   const handleSubmit = (event) => {

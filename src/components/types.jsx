@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import http from "../services/httpServices";
+import { toast } from "react-toastify";
 
 function Types({ data, setData }) {
   const [typeToSave, setTypeToSave] = useState({ type: "", terms: [] });
@@ -10,7 +12,7 @@ function Types({ data, setData }) {
     const value = event.target.value;
     let myTypeToSave = { ...typeToSave };
     if (id.toLowerCase() === "type") {
-      myTypeToSave.type = value;
+      myTypeToSave.type = Number(value);
       setTypeToSave(myTypeToSave);
     }
     if (id.toLowerCase() === "terms") {
@@ -22,10 +24,15 @@ function Types({ data, setData }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    const myData = data;
-    myData.push(typeToSave);
-    setData(myData);
+    try {
+      http.post("/type/new", typeToSave);
+      toast.success("Type save succeed...");
+      const myData = [...data];
+      myData.push(typeToSave);
+      setData(myData);
+    } catch (e) {
+      toast.error("Could not save...");
+    }
   };
 
   return (
@@ -36,7 +43,9 @@ function Types({ data, setData }) {
           <Form.Label>Type</Form.Label>
           <Form.Control
             id="type"
-            type="input"
+            type="number"
+            min="0"
+            max="255"
             placeholder="Enter type"
             onChange={(event) => handleChange(event)}
           />
